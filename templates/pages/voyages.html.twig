@@ -8,14 +8,23 @@
                     Ville
                     <a href="{{ path('voyages.sort',{champ:'ville',ordre:'ASC'}) }}" class="btn btn-primary btn-am active" role="button" aria-pressed="true"><</a>
                     <a href="{{ path('voyages.sort',{champ:'ville',ordre:'DESC'}) }}" class="btn btn-primary btn-am active" role="button" aria-pressed="true">></a>
-                    <form class="form-align mt-1" method="POST" action"{{ path('voyages.findallequal', {champ:'ville'}) }}>
+                    <form class="form-align mt-1" method="POST" action="{{ path('voyages.findallequal', {champ:'ville'}) }}">
                         <div class="form-group mr-1">
                             <input type="text" class="am" name="recherche" placeholder="rechercher" >
-                            <button type="submit" class="btn btn-am">filtre</button>
+                            <button type="submit" class="btn btn-am btn-primary mb-2">filtre</button>
                         </div>
                     </form>
                 </th>
-                <th class="text-left align-top" scope="col">Pays</th>
+                <th class="text-left align-top" scope="col">Pays
+                    <a href="{{ path('voyages.sort',{champ:'pays',ordre:'ASC'}) }}" class="btn btn-primary btn-am active" role="button" aria-pressed="true"><</a>
+                    <a href="{{ path('voyages.sort',{champ:'pays',ordre:'DESC'}) }}" class="btn btn-primary btn-am active" role="button" aria-pressed="true">></a>
+                    <form class="form-align mt-1" method="POST" action="{{ path('voyages.findallequal', {champ:'pays'}) }}">
+                        <div class="form-group mr-1">
+                            <input type="text" class="am" name="recherche" placeholder="rechercher" >
+                            <button type="submit" class="btn btn-am btn-primary mb-2">filtre</button>
+                        </div>
+                    </form>
+                </th>
                 <th class="text-end align-top" scope="col">Note</th>
                 <th class="text-center align-top" scope="col">Date</th>
             </tr>
@@ -25,7 +34,7 @@
                 <tr>
                     <td>
                         <h5 class="text-primary">
-                            <a href="#"> {{ visite.ville }}</a>
+                            <a href="{{ path('voyages.showone',{id:visite.id}) }}"> {{ visite.ville }}</a>
                         </h5>
                     </td>
                     <td>

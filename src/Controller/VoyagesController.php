@@ -34,11 +34,20 @@ class VoyagesController extends AbstractController
         ]);   
     }
     #[Route('/voyages/recherche/{champ}', name: 'voyages.findallequal')]
-    Public function findAllEqual ($champ, Request $request):Response{
+    public function findAllEqual ($champ, Request $request ,VisiteRepository $repository):Response{
+        
         $valeur = $request->get("recherche");
-        $visites =  $this->repository->findByEqualValue($champ, $valeur);
+        $visites = $repository->findByEqualValue($champ, $valeur);
         return $this->render("pages/voyages.html.twig",[
             'visites'=> $visites
         ]);
+    }
+    #[Route('voyages/voyage/{id}',name:'voyages.showone')]
+    public function showOne($id, VisiteRepository $repository) :Response{
+        
+        $visite = $repository->find($id);
+        return $this->render("pages/voyage.html.twig",[
+                'visite'=>$visite
+                ]);
     }
 }

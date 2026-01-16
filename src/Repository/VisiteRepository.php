@@ -30,7 +30,7 @@ class VisiteRepository extends ServiceEntityRepository
     public function findByEqualValue($champ,$valeur) :array {
         if($valeur==""){
             return $this->createQueryBuilder('v')
-                    ->orderBy('v,'.$champ,'ASC')
+                    ->orderBy('v.'.$champ,'ASC')
                     ->getQuery()
                     ->getResult();
         }else{
